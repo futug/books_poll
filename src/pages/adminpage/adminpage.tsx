@@ -16,7 +16,7 @@ const NewPoll = React.memo(({ pollList, deleteHandler, setNewPollList }: { pollL
   const handleSubmit = React.useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-        await fetch('/api/new_poll', {
+        await fetch('https://bookpoll.vercel.app/api/new_poll', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const AdminPage = () => {
   const [creds, setCreds] = React.useState({ username: localStorage.getItem('username') || '', password: localStorage.getItem('password') || '' });
   const getBooks = async () => {
     try {
-      const res = await fetch('/api/books');
+      const res = await fetch('https://bookpoll.vercel.app/api/books');
       setBooks(await res.json());
     } catch (error) {
       console.log(error);

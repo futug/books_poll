@@ -48,7 +48,7 @@ function App() {
 
   const getPoll = useCallback(async () => {
     try {
-      const res = await fetch('/api/polls');
+      const res = await fetch('https://bookpoll.vercel.app/api/polls');
       const data = await res.json();
       pollRef.current = data[data.length - 1];
       setPoll(data[data.length - 1]);
@@ -60,7 +60,7 @@ function App() {
   const getStats = useCallback(async () => {
     if (!poll?._id) return;
     try {
-      const statRes = await fetch(`/api/polls/${poll._id}/stats`, {
+      const statRes = await fetch(`https://bookpoll.vercel.app/api/polls/${poll._id}/stats`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ function App() {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     try {
-      await fetch('/api/vote', {
+      await fetch('https://bookpoll.vercel.app/api/vote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
