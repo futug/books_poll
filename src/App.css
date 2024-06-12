@@ -1,0 +1,48 @@
+body {
+  background-color: #6664ee;
+}
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.link {
+  text-decoration: underline;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form {
+  width: 500px;
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 1rem;
+}
+
+.form > label {
+  border: 1px solid #f0f0f0;
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.form > label:hover {
+  border-color: #6766ee;
+  transition: all .3s ease-in-out;
+}
+
