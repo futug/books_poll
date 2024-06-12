@@ -15,6 +15,8 @@ const NewPoll = React.memo(({ pollList, deleteHandler, setNewPollList }: { pollL
 
   const handleSubmit = React.useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (pollList.length < 2) return alert('Добавьте книги для голосования');
     try {
         await fetch('https://bookpoll.vercel.app/api/new_poll', {
         method: 'POST',
