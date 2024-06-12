@@ -98,6 +98,7 @@ function App() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (chosenOptions.length === 0) return alert('Выберите хотя бы один вариант');
     const form = e.target as HTMLFormElement;
     try {
       await fetch('https://bookpoll.vercel.app/api/vote', {
