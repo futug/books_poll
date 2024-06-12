@@ -1,7 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { useDebounce } from '../../utils/hooks';
-import React, { useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 type Book = {
   _id: string;
@@ -17,13 +16,14 @@ const NewPoll = React.memo(({ pollList, deleteHandler, setNewPollList }: { pollL
   const handleSubmit = React.useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/new_poll', {
+        await fetch('/api/new_poll', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ options: pollList, active_poll: activePoll }),
       });
+
       setNewPollList([]);
       setActivePoll(false);
     } catch (error) {
