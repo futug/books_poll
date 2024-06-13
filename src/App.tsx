@@ -79,13 +79,16 @@ function App() {
 
   useEffect(() => {
     if (poll?._id) {
-      // getStats();
+      getStats();
     }
+  }, [poll?._id, getStats]);
+  
+  useEffect(() => {
     const merged = mergeResponse(poll, pollStats);
     if (merged) {
       setMergedPoll(merged);
     }
-  }, [poll, pollStats, getStats]);
+  }, [poll, pollStats]);
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -119,18 +122,7 @@ function App() {
     }
   };
 
-  const tgAuthHandler = async() => {
-    try {
-      await fetch('http://localhost:3000/api/auth/telegram', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
 
   const handleBoxClick = (optionId: string) => {
     setChosenOptions((prevChosenOptions) =>
@@ -144,7 +136,6 @@ function App() {
     <>
       <div className="container">
         <div className="wrapper">
-          <Button variant="contained" onClick={tgAuthHandler}>Telegram</Button>
           <Link to="/admin" className='link'>Админка</Link>
           <form onSubmit={handleSubmit} className="form">
             Выбираем книгу
