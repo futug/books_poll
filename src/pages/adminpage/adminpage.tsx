@@ -1,5 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { useDebounce } from '../../utils/hooks';
+import { translateToRussianLayout } from '../../utils/funcs';
 import React from 'react';
 
 type Book = {
@@ -139,7 +140,7 @@ const AdminPage = () => {
         >
           <input type="text" value={book} onChange={(e) => setBook(e.target.value)} placeholder='Поиск'/>
           {pending ? <p>Ищем...</p> : (
-            books.filter((b) => b.title.toLowerCase().includes(debouncedValue.toLowerCase())).filter((book) => !newPollList.some((b) => b._id === book._id)).map((book) => (
+            books.filter((b) => b.title.toLowerCase().includes(translateToRussianLayout(debouncedValue).toLowerCase())).filter((book) => !newPollList.some((b) => b._id === book._id)).map((book) => (
               
               <Box sx={{
                 padding: '1rem',
